@@ -11,7 +11,7 @@ interface ProductViewerProps {
   slug: {
     current: string;
   };
-  gender: string;
+  gender: "male" | "female";
   product_cover_image: {
     asset: {
       _ref: string;
