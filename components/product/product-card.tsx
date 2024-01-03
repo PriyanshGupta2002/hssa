@@ -14,7 +14,7 @@ export interface ProductCardProps {
   slug: {
     current: string;
   };
-  gender: string;
+  gender: "male" | "female";
   product_cover_image: {
     asset: {
       _ref: string;
@@ -42,7 +42,8 @@ export interface ProductCardProps {
       hex: string;
     };
   }[];
-  onNavigate?: (product_type: string) => void;
+  hair_type: string;
+  onNavigate?: (product_type: string, gender: "male" | "female") => void;
 }
 const ProductCard: React.FC<ProductCardProps> = ({
   gender,
@@ -59,10 +60,11 @@ const ProductCard: React.FC<ProductCardProps> = ({
   breadth_base,
   base_material,
   onNavigate,
+  hair_type,
 }) => {
   const handleNavigation = () => {
-    if (onNavigate && product_type) {
-      onNavigate(product_type);
+    if (onNavigate && product_type && gender) {
+      onNavigate(product_type, gender);
       return;
     }
   };
@@ -82,6 +84,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
       length_base,
       breadth_base,
       base_material,
+      hair_type,
     };
   }, [
     gender,
@@ -97,6 +100,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
     length_base,
     breadth_base,
     base_material,
+    hair_type,
   ]);
   const handleOpen = useCallback(
     (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {

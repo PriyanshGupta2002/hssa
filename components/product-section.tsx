@@ -17,8 +17,8 @@ import ProductCard, { ProductCardProps } from "./product/product-card";
 const ProductSection = ({ products }: { products: ProductCardProps[] }) => {
   const router = useRouter();
   const handleNavigation = useCallback(
-    (productType: string) => {
-      router.push(`/products?product_type=${productType}`);
+    (productType: string, gender: "male" | "female") => {
+      router.push(`/products/${gender}?product_type=${productType}`);
     },
     [router]
   );
@@ -76,8 +76,12 @@ const ProductSection = ({ products }: { products: ProductCardProps[] }) => {
                 product_price={item.product_price}
                 slug={item.slug}
                 colors={item.colors}
+                hair_type={item.hair_type}
                 length={item.length}
-                onNavigate={(product_type) => handleNavigation(product_type)}
+                base_material={item.base_material}
+                onNavigate={(product_type, gender) =>
+                  handleNavigation(product_type, gender)
+                }
               />
             </CarouselItem>
           ))}

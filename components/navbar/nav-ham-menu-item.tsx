@@ -7,7 +7,7 @@ import {
 import { navLinks } from "@/lib/constants";
 import Link from "next/link";
 import { Button } from "../ui/button";
-import { ArrowRight, ChevronsUpDown, Flame } from "lucide-react";
+import { ArrowRight, ChevronsUpDown, Flame, Grid } from "lucide-react";
 
 const NavHamMenuItem = () => {
   return (
@@ -49,6 +49,17 @@ const NavHamMenuItem = () => {
         >
           Hot Deals
           <Flame className="w-5 h-5 ml-auto group-hover:text-rose-500" />
+        </Button>
+      </Link>
+      <Link href={"/products"}>
+        {" "}
+        <Button
+          variant={"ghost"}
+          size={"sm"}
+          className="group text-zinc-600 w-full"
+        >
+          Available Products
+          <Grid className="w-5 h-5 ml-auto group-hover:text-rose-500" />
         </Button>
       </Link>
     </div>

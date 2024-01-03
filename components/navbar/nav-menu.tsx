@@ -13,7 +13,7 @@ import NavItem from "./nav-item";
 import { navLinks } from "@/lib/constants";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
-import { Flame } from "lucide-react";
+import { Flame, GanttChart, Grid } from "lucide-react";
 const NavMenu = () => {
   return (
     <NavigationMenu>
@@ -37,16 +37,20 @@ const NavMenu = () => {
             </NavigationMenuContent>
           </NavigationMenuItem>
         ))}
-        <NavigationMenuItem className="bg-transparent text-neutral-500 group  ">
+
+        <NavigationMenuItem className="bg-transparent text-neutral-500   ">
+          <Link href="/products" legacyBehavior passHref>
+            <NavigationMenuLink className={cn(navigationMenuTriggerStyle())}>
+              Available Products
+              <GanttChart className="w-5 h-5 ml-2 text-green-600" />
+            </NavigationMenuLink>
+          </Link>
+        </NavigationMenuItem>
+        <NavigationMenuItem className="bg-transparent text-neutral-500  ">
           <Link href="/#hot-deals" legacyBehavior passHref className="group">
-            <NavigationMenuLink
-              className={cn(
-                "group-hover:text-rose-500",
-                navigationMenuTriggerStyle()
-              )}
-            >
+            <NavigationMenuLink className={cn(navigationMenuTriggerStyle())}>
               Hot Deals
-              <Flame className="w-5 h-5 ml-2 group-hover:text-rose-600" />
+              <Flame className="w-5 h-5 ml-2 group-hover:text-rose-500" />
             </NavigationMenuLink>
           </Link>
         </NavigationMenuItem>

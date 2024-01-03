@@ -17,7 +17,7 @@ const NavHamMenu = () => {
       <SheetTrigger className="hover:bg-zinc-400/20 transition-all p-2 bg-zinc-500/20 rounded-full hover:rounded-md">
         <Menu className="w-5 h-5 text-neutral-600" />
       </SheetTrigger>
-      <SheetContent className="p-2">
+      <SheetContent className="p-2 overflow-y-auto">
         <NavHamMenuItem />
       </SheetContent>
     </Sheet>

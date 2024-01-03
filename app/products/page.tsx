@@ -1,6 +1,9 @@
+import ProductFilter from "@/components/product/product-filter";
+import ProductSearchPalette from "@/components/product/product-search-palette";
 import ProductViewer from "@/components/product/product-viewer";
 import { Button } from "@/components/ui/button";
 import { client } from "@/lib/client";
+import { filterOptions, productsSearch } from "@/lib/constants";
 import { CircleOff } from "lucide-react";
 import Link from "next/link";
 import React from "react";
@@ -43,7 +46,22 @@ const ProductsPage = async ({
   }
 
   return (
-    <div className="p-5">
+    <div className="p-5 space-y-4">
+      <div className="flex items-center gap-4 flex-wrap">
+        {filterOptions.map((filOp, idx) => (
+          <ProductFilter
+            options={filOp.options}
+            placeholder={filOp.placeholderName}
+            queryKey={filOp.queryKey}
+            key={idx}
+          />
+        ))}
+
+        <ProductSearchPalette productTypes={productsSearch} />
+        <Link href="/products">
+          <Button size={"sm"}>Remove All Filters</Button>
+        </Link>
+      </div>
       <ProductViewer products={products} />
     </div>
   );

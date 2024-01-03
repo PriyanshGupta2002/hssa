@@ -45,6 +45,12 @@ const QuickViewModal = () => {
             <p className="text-sm text-zinc-700">
               {data.productInfo?.product_description}
             </p>
+            <p className="text-sm text-zinc-400">
+              Hair Type -{" "}
+              <span className="capitalize text-neutral-700">
+                {data.productInfo?.hair_type}{" "}
+              </span>
+            </p>
             <p className="text-sm text-neutral-600 flex items-center gap-2">
               Customizable
               {data.productInfo?.customizable ? (

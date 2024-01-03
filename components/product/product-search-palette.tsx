@@ -13,11 +13,10 @@ import {
   CommandShortcut,
 } from "@/components/ui/command";
 import { Search, TrendingUp } from "lucide-react";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 interface ProductSearchPaletteProps {
   label: string;
-  value: string;
+
   url: string;
 }
 const ProductSearchPalette = ({
@@ -28,8 +27,8 @@ const ProductSearchPalette = ({
   const [open, setOpen] = useState(false);
   const router = useRouter();
   const handleNavigation = useCallback(
-    (url: string, value: string) => {
-      router.push(`${url}?product_type=${value}`);
+    (url: string) => {
+      router.push(url);
       setOpen(false);
     },
     [router]
@@ -43,12 +42,12 @@ const ProductSearchPalette = ({
         Search For Products <Search className="ml-2 text-zinc-400 h-5 w-5" />
       </div>
       <CommandDialog open={open} onOpenChange={setOpen}>
-        <CommandInput placeholder="Type a command or search..." />
+        <CommandInput placeholder="Search for products" />
         <CommandList className="p-3">
           {productTypes.map((item: ProductSearchPaletteProps, idx: number) => (
             <CommandItem
               key={idx}
-              onSelect={() => handleNavigation(item.url, item.value)}
+              onSelect={() => handleNavigation(item.url)}
               className="text-zinc-400 group hover:text-zinc-700 transition-all hover:bg-zinc-400/20 cursor-pointer"
             >
               <span>{item.label}</span>
